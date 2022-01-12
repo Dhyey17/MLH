@@ -1,5 +1,4 @@
 def ceaser(text, shift_key):
-    result = ""
     words = text.split()
     print(words)
     cwords = []
