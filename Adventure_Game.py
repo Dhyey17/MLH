@@ -60,13 +60,16 @@ while True:
                             print(f"You slayed the {mons_typ}.\n"
                                   f"Your health has been restored.")
                             user_health = 100
-                            play_again = input("Do you want to continue fighting monsters? (y/n): ").lower()
-                            if play_again == 'y':
-                                break
-                            elif play_again == "n":
-                                exit()
+                            if monsters:
+                                play_again = input("Do you want to continue fighting monsters? (y/n): ").lower()
+                                if play_again == 'y':
+                                    break
+                                elif play_again == "n":
+                                    exit()
+                                else:
+                                    raise InvalidInput
                             else:
-                                raise InvalidInput
+                                raise IndexError
                     
                         else:
                             user_health -= mons_damage
@@ -93,7 +96,7 @@ while True:
                     break
         
         elif choice.lower() == "q":
-            print("\nGOODBYE!!!!!!")
+            print("\nWhat a loser!!!!!")
             exit()
         
         else:
@@ -104,3 +107,4 @@ while True:
     
     except IndexError:
         print("\nCongratulations!!! you have sucessfully defeated all the monsters")
+        exit()
