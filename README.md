@@ -1,2 +1,2 @@
 # MLH
-This repo contains projects made uunder MLH local hack day
+This repo contains projects made under MLH local hack day
