@@ -2,7 +2,8 @@ import player
 from Game import TicTacToe, play
 
 print(f"1. Play Against Computer \n"
-      f"2. Play Against Human")
+      f"2. Play Against Human \n"
+      f"")
 choice = int(input("Enter Your Choice:"))
 
 
@@ -21,5 +22,9 @@ elif choice == 2:
     playerO = player.HumanPlayer("O")
     t = TicTacToe()
     play(t, playerX, playerO)
+    
 else:
-    raise GameError("You did not entered a valid choice")
+    try:
+        raise GameError
+    except GameError:
+        print("You did not entered a valid choice")
