@@ -95,7 +95,4 @@ def play(game, x_player, o_player, print_game=True):
         print('It\'s a tie!')
 
 
-playerX = player.HumanPlayer("X")
-playerO = player.ComputerPlayer("O")
-t = TicTacToe()
-play(t, playerX, playerO)
+
