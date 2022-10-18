@@ -7,7 +7,7 @@ import player
 class TicTacToe:
     def __init__(self):
         self.board = [" "] * 9
-        self.winner = None
+        self.curr_winner = None
     
     def showBoard(self):
         for row in [self.board[i * 3:(i + 1) * 3] for i in range(3)]:
@@ -18,16 +18,6 @@ class TicTacToe:
         numberBoard = [[str(i) for i in range(j * 3, (j + 1) * 3)] for j in range(3)]
         for row in numberBoard:
             print('| ' + ' | '.join(row) + ' |')
-    
-    def make_move(self, square, letter):
-        if self.board[square] == ' ':
-            self.board[square] = letter
-            
-            if self.winner(square, letter):
-                self.winner = letter
-            return True
-        
-        return False
     
     def winner(self, square, letter):
         row_ind = math.floor(square / 3)
@@ -51,6 +41,15 @@ class TicTacToe:
         
         return False
     
+    def make_move(self, square, letter):
+        if self.board[square] == ' ':
+            self.board[square] = letter
+            
+            if self.winner(square, letter):
+                self.curr_winner = letter
+            return True
+        return False
+    
     def empty_squares(self):
         return ' ' in self.board
     
@@ -64,7 +63,7 @@ class TicTacToe:
 def play(game, x_player, o_player, print_game=True):
     if print_game:
         game.numBoard()
-    letter = 'X'
+    letter = "X"
     
     while game.empty_squares():
         if letter == 'O':
@@ -76,10 +75,10 @@ def play(game, x_player, o_player, print_game=True):
         if game.make_move(square, letter):
             if print_game:
                 print(f'{letter} makes a move to square {square}')
-                game.print_board()
+                game.showBoard()
                 print('')
             
-            if game.current_winner:
+            if game.curr_winner:
                 if print_game:
                     print(letter + ' wins!')
                 return letter
