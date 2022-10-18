@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class InvalidInput(Exception):
@@ -30,19 +31,27 @@ monsterdict = {"goblin": 30,
 monsters = ["goblin", "orc", "dragon"]
 moves = {"h": "Hit", "d": "Doge"}
 fight = ["h", "d"]
+defeted = {}
 
 print("You are an adventurer, who is lost in woods full of monsters.\n"
-      "You hear some noises from not so far and decided to check it out.\n"
-      "You saw a monster there......\n")
+      "There are total 3 types of monsters in this forest:"
+      "Dragon, Orc and Goblin.\n"
+      "Defeat all of them to complete this game. \n\n\n")
+
+time.sleep(1.4)
 
 while True:
     try:
+        mons_typ = random.choice(monsters)
+        mons_health = monsterdict[mons_typ]
+        print("You hear some noises from not so far and decided to check it out.\n"
+              "You saw a monster there......\n")
+        print(f"Its a {mons_typ} with {mons_health}hp")
+        time.sleep(0.5)
         choice = input("Enter your choice fight the monster or quit (f/q):")
         if choice.lower() == "f":
-            mons_typ = random.choice(monsters)
-            mons_health = monsterdict[mons_typ]
             print()
-            print(mons_typ, mons_health)
+            print(f"You chose to fight the {mons_typ}")
             
             while True:
                 user_fight_choice = input("hit or dodge or quit or any other key to exit this fight(h/d/q):")
@@ -54,8 +63,13 @@ while True:
                         usr_damage = user_hit(mons_typ)
                         mons_health -= usr_damage
                         mons_damage = monster_hit(mons_typ)
-                    
+                        
                         if mons_health <= 0:
+                            if mons_typ in defeted:
+                                defeted[mons_typ] += 1
+                            else:
+                                defeted[mons_typ] = 1
+                            print(defeted)
                             monsters.pop(monsters.index(mons_typ))
                             print(f"You slayed the {mons_typ}.\n"
                                   f"Your health has been restored.")
@@ -65,39 +79,60 @@ while True:
                                 if play_again == 'y':
                                     break
                                 elif play_again == "n":
+                                    if defeted:
+                                        print("You defeated:")
+                                        for mons in defeted:
+                                            print(f"{defeted[mons]} {mons}")
                                     exit()
                                 else:
                                     raise InvalidInput
                             else:
                                 raise IndexError
-                    
+                        
                         else:
                             user_health -= mons_damage
-                            print(f"monster health:{mons_health}, damage done: {usr_damage}\n"
-                                  f"user health:{user_health}, damage done: {mons_damage}")
+                            time.sleep(0.5)
+                            print(f"You striked the {mons_typ} dealing the damage of {usr_damage}hp but,\n"
+                                  f"{mons_typ} attacked back and you lost {mons_damage}hp")
+                            print(f"Monster health:{mons_health}\n"
+                                  f"Your health:{user_health}")
                             print()
-                        
+                            
                             if user_health <= 0:
                                 print("You died!!!!!!!!\n"
                                       f"The {mons_typ} was too strong for you to handle.")
                                 exit()
-                
+                    
                     elif user_fight_choice == "d":
+                        time.sleep(0.5)
                         print("You chose to doge")
                     
                     elif mons_choice == "d":
+                        time.sleep(0.5)
                         print(f"{mons_typ} chose to doge")
                 
                 elif user_fight_choice == "q":
-                    print("What a loser!!!!!")
-                    exit()
+                    if defeted:
+                        print("You defeated:")
+                        for mons in defeted:
+                            print(f"{defeted[mons]} {mons}")
+                            exit()
+                    else:
+                        print("\nWhat a loser!!!!!")
+                        exit()
                 
                 else:
                     break
         
         elif choice.lower() == "q":
-            print("\nWhat a loser!!!!!")
-            exit()
+            if defeted:
+                print("You defeated:")
+                for mons in defeted:
+                    print(f"{defeted[mons]} {mons}")
+                    exit()
+            else:
+                print("\nWhat a loser!!!!!")
+                exit()
         
         else:
             raise InvalidInput
