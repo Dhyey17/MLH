@@ -51,6 +51,6 @@ headers = {
     'cache-control': "no-cache"
 }
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+response = requests.request("GET", url, headers=headers, params=querystring, timeout=60)
 
 print(response.text)
