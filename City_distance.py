@@ -9,6 +9,6 @@ destination = input("Destination city: ")
 r = requests.get(f"https://maps.googleapis.com/maps/api/distancematrix/json?"
                  f"origins={source}"
                  f"&destinations={destination}"
-                 f"&key={api_key}")
+                 f"&key={api_key}", timeout=60)
 distance = r.json()
 print(distance)

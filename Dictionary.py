@@ -8,7 +8,7 @@ class InvalidWord(Exception):
 
 try:
     word = input("Enter a word: ")
-    url = requests.get('https://en.oxforddictionaries.com/definition/' + word)
+    url = requests.get('https://en.oxforddictionaries.com/definition/' + word, timeout=60)
     print("Finding information.....\n "
           "This might take some time based upon your internet speed.\n")
     data = url.content
