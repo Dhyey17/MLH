@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 
 class InvalidInput(Exception):
@@ -8,20 +8,20 @@ class InvalidInput(Exception):
 
 def user_hit(monster):
     if monster == "goblin":
-        return random.randint(5, 20)
+        return secrets.SystemRandom().randint(5, 20)
     elif monster == "orc":
-        return random.randint(12, 40)
+        return secrets.SystemRandom().randint(12, 40)
     else:
-        return random.randint(25, 100)
+        return secrets.SystemRandom().randint(25, 100)
 
 
 def monster_hit(monster):
     if monster == "goblin":
-        return random.randint(1, 9)
+        return secrets.SystemRandom().randint(1, 9)
     elif monster == "orc":
-        return random.randint(5, 19)
+        return secrets.SystemRandom().randint(5, 19)
     else:
-        return random.randint(10, 42)
+        return secrets.SystemRandom().randint(10, 42)
 
 
 user_health = 100
@@ -42,7 +42,7 @@ time.sleep(1.4)
 
 while True:
     try:
-        mons_typ = random.choice(monsters)
+        mons_typ = secrets.SystemRandom().choice(monsters)
         mons_health = monsterdict[mons_typ]
         print("You hear some noises from not so far and decided to check it out.\n"
               "You saw a monster there......\n")
@@ -56,7 +56,7 @@ while True:
             while True:
                 user_fight_choice = input("hit or dodge or quit or any other key to exit this fight(h/d/q):")
                 print()
-                mons_choice = random.choice(fight)
+                mons_choice = secrets.SystemRandom().choice(fight)
                 
                 if user_fight_choice in fight:
                     if user_fight_choice.lower() == mons_choice == "h":

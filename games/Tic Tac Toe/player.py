@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 class Player:
@@ -14,7 +14,7 @@ class ComputerPlayer(Player):
         super().__init__(letter)
     
     def NextMove(self, game):
-        square = random.choice(game.available_moves())
+        square = secrets.SystemRandom().choice(game.available_moves())
         return square
 
 

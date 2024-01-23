@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import time
-import random
+import secrets
 
 SIZE = 40
 BACKGROUND_COLOR = (110, 110, 5)
@@ -19,8 +19,8 @@ class Apple:
         pygame.display.flip()
     
     def move(self):
-        self.x = random.randint(1, 26) * SIZE
-        self.y = random.randint(1, 11) * SIZE
+        self.x = secrets.SystemRandom().randint(1, 26) * SIZE
+        self.y = secrets.SystemRandom().randint(1, 11) * SIZE
 
 
 class Snake:

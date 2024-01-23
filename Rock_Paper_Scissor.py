@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 
 class ChoiceError(Exception):
@@ -9,7 +9,7 @@ class ChoiceError(Exception):
 print("Welcome to the Rock Paper Scissors Game")
 while True:
     rps = ["R", "P", "S"]
-    comp = random.choice(rps)
+    comp = secrets.SystemRandom().choice(rps)
     print()
     time.sleep(0.8)
     print("Press 'R' to select Rock \n"
