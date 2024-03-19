@@ -34,7 +34,7 @@ while True:
         dic = {"R": "ROCK", "S": "SCISSORS", "P": "PAPER"}
         if human == comp:
             print(f"You and computer both chose {dic[human]} \n"
-                  f"It's a TIE!!!!")
+                  "It's a TIE!!!!")
             time.sleep(2)
             print()
             print("Press 'Y' to play again or \n"
@@ -48,7 +48,7 @@ while True:
         elif (human == "R" and comp == "S") or (human == "S" and comp == "P") or (human == "P" and comp == "R"):
             print(f"You chose {dic[human]} \n"
                   f"Computer chose {dic[comp]} \n"
-                  f"You WON!!!!")
+                  "You WON!!!!")
             time.sleep(2)
             print()
             print("Press 'Y' to play again \n"
@@ -62,7 +62,7 @@ while True:
         elif (comp == "R" and human == "S") or (comp == "S" and human == "P") or (comp == "P" and human == "R"):
             print(f"You chose {dic[human]} \n"
                   f"Computer chose {dic[comp]} \n"
-                  f"You LOST!!!!")
+                  "You LOST!!!!")
             time.sleep(2)
             print()
             print("Press 'Y' to play again \n"
