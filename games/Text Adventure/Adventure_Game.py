@@ -72,7 +72,7 @@ while True:
                             print(defeted)
                             monsters.pop(monsters.index(mons_typ))
                             print(f"You slayed the {mons_typ}.\n"
-                                  f"Your health has been restored.")
+                                  "Your health has been restored.")
                             user_health = 100
                             if monsters:
                                 play_again = input("Do you want to continue fighting monsters? (y/n): ").lower()

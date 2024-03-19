@@ -1,8 +1,8 @@
 import player
 from Game import TicTacToe, play
 
-print(f"1. Play Against Computer \n"
-      f"2. Play Against Human \n"
+print("1. Play Against Computer \n"
+      "2. Play Against Human \n"
       f"")
 choice = int(input("Enter Your Choice:"))
 
